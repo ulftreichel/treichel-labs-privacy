@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konto löschen – Findly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #0E0E12;
+      --surface:  #16161C;
+      --border:   #2a2a35;
+      --gold:     #E8C97A;
+      --text:     #F0EDE8;
+      --muted:    #6B6878;
+      --red:      #E07A7A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0 40px;
+      text-align: center;
+    }
+
+    .wordmark {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    .page-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: #C8C4BE;
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0;
+    }
+
+    ul li {
+      color: #C8C4BE;
+      padding: 10px 0 10px 20px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    ul li:last-child { border-bottom: none; }
+
+    ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .warning-box {
+      background: rgba(224, 122, 122, 0.08);
+      border-left: 3px solid var(--red);
+      padding: 20px 24px;
+      margin: 24px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .warning-box p {
+      margin: 0;
+      color: #E0A0A0;
+      font-size: 0.92rem;
+    }
+
+    .info-box {
+      background: var(--surface);
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      margin: 24px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .info-box p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    .data-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--gold);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .data-table td {
+      padding: 12px 14px;
+      color: #C8C4BE;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .delete-btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 32px;
+      background: transparent;
+      border: 1px solid var(--red);
+      color: var(--red);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .delete-btn:hover {
+      background: rgba(224, 122, 122, 0.12);
+      color: #F0A0A0;
+      border-color: #F0A0A0;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232, 201, 122, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    a:hover { border-color: var(--gold); }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child { border-bottom: none; }
+
+    .step-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      min-width: 32px;
+      line-height: 1.4;
+    }
+
+    .step-text {
+      color: #C8C4BE;
+      padding-top: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">Findly</div>
+  <div class="tagline">by Treichel Labs</div>
+</header>
+
+<main>
+  <h1 class="page-title">Konto löschen</h1>
+  <p>Auf dieser Seite kannst du die Löschung deines Findly-Kontos und aller damit verbundenen Daten beantragen.</p>
+
+  <div class="warning-box">
+    <p>Die Kontolöschung ist unwiderruflich. Nach der Löschung kannst du dich nicht mehr mit deinem Konto anmelden und alle deine Daten werden dauerhaft entfernt.</p>
+  </div>
+
+  <section>
+    <h2>So beantragst du die Löschung</h2>
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-text">Sende eine E-Mail an <a href="mailto:ulf.treichel@googlemail.com?subject=Findly%20%E2%80%93%20Kontol%C3%B6schung&body=Hallo%2C%0A%0Aich%20m%C3%B6chte%20mein%20Findly-Konto%20und%20alle%20zugeh%C3%B6rigen%20Daten%20l%C3%B6schen%20lassen.%0A%0AMeine%20bei%20Findly%20registrierte%20E-Mail-Adresse%3A%20%0A%0AViele%20Gr%C3%BC%C3%9Fe">ulf.treichel@googlemail.com</a> mit dem Betreff <strong>"Findly – Kontolöschung"</strong>.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-text">Gib in der E-Mail die E-Mail-Adresse an, mit der du dich bei Findly angemeldet hast (dein Google-Konto).</div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-text">Wir bestätigen den Eingang deiner Anfrage innerhalb von 48 Stunden und löschen dein Konto innerhalb von 30 Tagen.</div>
+    </div>
+
+    <a class="delete-btn" href="mailto:ulf.treichel@googlemail.com?subject=Findly%20%E2%80%93%20Kontol%C3%B6schung&body=Hallo%2C%0A%0Aich%20m%C3%B6chte%20mein%20Findly-Konto%20und%20alle%20zugeh%C3%B6rigen%20Daten%20l%C3%B6schen%20lassen.%0A%0AMeine%20bei%20Findly%20registrierte%20E-Mail-Adresse%3A%20%0A%0AViele%20Gr%C3%BC%C3%9Fe">
+      Löschung per E-Mail beantragen
+    </a>
+  </section>
+
+  <section>
+    <h2>Was wird gelöscht?</h2>
+    <p>Bei einer Kontolöschung werden folgende Daten vollständig und unwiderruflich entfernt:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Datenkategorie</th>
+          <th>Löschung</th>
+          <th>Aufbewahrungsfrist</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nutzerprofil (Name, E-Mail, Profilbild)</td>
+          <td>Vollständig</td>
+          <td>Sofort nach Bearbeitung</td>
+        </tr>
+        <tr>
+          <td>Nickname</td>
+          <td>Vollständig</td>
+          <td>Sofort nach Bearbeitung</td>
+        </tr>
+        <tr>
+          <td>Standortdaten</td>
+          <td>Vollständig</td>
+          <td>Bereits bei Verbindungstrennung gelöscht — keine Historie vorhanden</td>
+        </tr>
+        <tr>
+          <td>Pairing-/Verbindungsdaten</td>
+          <td>Vollständig</td>
+          <td>Sofort nach Bearbeitung</td>
+        </tr>
+        <tr>
+          <td>FCM-Token (Push-Benachrichtigungen)</td>
+          <td>Vollständig</td>
+          <td>Sofort nach Bearbeitung</td>
+        </tr>
+        <tr>
+          <td>Premium-Status</td>
+          <td>Vollständig</td>
+          <td>Sofort nach Bearbeitung — nicht erstattungsfähig</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <p>Findly speichert keine Standortverläufe oder Chatverläufe. Es gibt keine weiteren Daten, die über die oben genannten hinausgehen.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Nur Daten löschen, Konto behalten</h2>
+    <p>
+      Wenn du nicht dein gesamtes Konto löschen, sondern nur bestimmte Daten entfernen möchtest (z. B. deinen Nickname zurücksetzen), kontaktiere uns ebenfalls unter <a href="mailto:ulf.treichel@googlemail.com">ulf.treichel@googlemail.com</a> und beschreibe dein Anliegen.
+    </p>
+  </section>
+
+  <section>
+    <h2>Kontakt</h2>
+    <p>
+      Bei Fragen zur Kontolöschung oder zum Datenschutz:<br />
+      <a href="mailto:ulf.treichel@googlemail.com">ulf.treichel@googlemail.com</a>
+    </p>
+    <p>
+      Weitere Informationen zur Datenverarbeitung findest du in unserer <a href="./datenschutz_findly.html">Datenschutzerklärung</a>.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Treichel Labs · Findly · <a href="mailto:ulf.treichel@googlemail.com">Kontakt</a>
+</footer>
+
+</body>
+</html>
