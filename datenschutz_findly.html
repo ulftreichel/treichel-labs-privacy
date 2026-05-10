@@ -266,9 +266,9 @@
     <h2>4. Datenverarbeitung und Speicherung</h2>
     <p>Findly nutzt folgende Dienste zur Datenverarbeitung:</p>
     <ul>
-      <li><strong>Appwrite (selbst gehostet)</strong> – Authentifizierung, Nutzerdaten und Echtzeit-Standortübertragung. Der Server befindet sich in der EU.</li>
-      <li><strong>Firebase Cloud Messaging (Google)</strong> – Ausschließlich für Push-Benachrichtigungen (z. B. wenn ein Partner eine Verbindung anfragen). Es werden keine Inhaltsdaten übertragen.</li>
-      <li><strong>Google Sign-In</strong> – Optionale Anmeldung mit einem Google-Konto. Dabei gelten zusätzlich die <a href="https://policies.google.com/privacy" target="_blank">Datenschutzbestimmungen von Google</a>.</li>
+      <li><strong>Google Firebase Firestore</strong> – Speicherung von Nutzerdaten, Pairing-Daten und Echtzeit-Standortübertragung. Die Daten werden auf Google-Servern gespeichert. Es gelten die <a href="https://firebase.google.com/support/privacy" target="_blank">Datenschutzbestimmungen von Google Firebase</a>.</li>
+      <li><strong>Firebase Cloud Messaging (Google)</strong> – Ausschließlich für Push-Benachrichtigungen (z. B. wenn ein Partner eine Verbindung anfragt). Es werden keine Inhaltsdaten übertragen.</li>
+      <li><strong>Google Sign-In</strong> – Anmeldung mit einem Google-Konto. Dabei gelten zusätzlich die <a href="https://policies.google.com/privacy" target="_blank">Datenschutzbestimmungen von Google</a>.</li>
     </ul>
   </section>
 
@@ -320,7 +320,7 @@
       <li>Verschlüsselte Übertragung aller Daten via HTTPS/TLS.</li>
       <li>Standortdaten werden auf dem Gerät zwischengespeichert und sind durch das Android-Sicherheitsmodell geschützt.</li>
       <li>Zugriff auf Standortdaten ist ausschließlich authentifizierten Nutzern mit aktiver Verbindung möglich.</li>
-      <li>Server-seitige Zugriffskontrolle über Appwrite-Berechtigungsregeln.</li>
+      <li>Server-seitige Zugriffskontrolle über Firebase Security Rules.</li>
     </ul>
   </section>
 
