@@ -237,6 +237,11 @@
           <td>Anonyme Verbindungs-ID für die Zuordnung zu einem Partner</td>
           <td>Art. 6 Abs. 1 lit. b DSGVO</td>
         </tr>
+        <tr>
+          <td>Hintergrund-Standort</td>
+          <td>GPS-Koordinaten bei gesperrtem Bildschirm oder minimierter App, ausschließlich während aktiver Verbindung</td>
+          <td>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</td>
+        </tr>
       </tbody>
     </table>
 
@@ -251,14 +256,18 @@
       Die Kernfunktion von Findly ist das Teilen des Standorts mit einem verbundenen Partner. Standortdaten werden daher mit besonderer Sorgfalt behandelt:
     </p>
     <ul>
-      <li>Standortdaten werden <strong>nur erhoben, wenn eine aktive Partnerverbindung besteht</strong> und du die App bewusst nutzt.</li>
+      <li>Standortdaten werden <strong>nur erhoben, wenn eine aktive Partnerverbindung besteht</strong>.</li>
       <li>Standortdaten werden <strong>ausschließlich deinem verbundenen Partner</strong> angezeigt – niemals Dritten.</li>
       <li>Die Erfassung erfolgt <strong>bewegungsbasiert</strong> (nicht dauerhaft-periodisch), um den Akkuverbrauch zu minimieren.</li>
       <li>Standortdaten werden auf unserem Server <strong>überschrieben, nicht dauerhaft gespeichert</strong> – es gibt keine Standort-Historie.</li>
       <li>Nach Beendigung der Verbindung werden die Standortdaten <strong>automatisch gelöscht</strong>.</li>
+      <li>Findly verarbeitet Standortdaten auch <strong>im Hintergrund</strong> (bei gesperrtem Bildschirm oder minimierter App), um sicherzustellen dass dein Partner dich jederzeit finden kann. Dies ist der Kernzweck der App und erfordert die Berechtigung „Standort immer zulassen".</li>
     </ul>
+    <div class="highlight-box">
+      <p><strong>Hintergrund-Standortverarbeitung:</strong> Findly nutzt einen Android Foreground Service mit dauerhaft sichtbarer Benachrichtigung ("Findly läuft im Hintergrund"), solange eine aktive Partnerverbindung besteht. Der Service wird automatisch beendet wenn die Verbindung getrennt wird. Die Verarbeitung erfolgt ausschließlich zur Entfernungsberechnung zwischen verbundenen Partnern – niemals zur Profilbildung oder Weitergabe an Dritte.</p>
+    </div>
     <p>
-      Die App kann je nach Nähe zum Partner zwischen verschiedenen Genauigkeitsstufen wechseln (grobe Position bei großer Entfernung, präzise Navigation bei naher Entfernung im Festival-Modus).
+      Die App wechselt je nach Nähe zum Partner zwischen verschiedenen Genauigkeitsstufen (grobe Position bei großer Entfernung, präzise Navigation bei naher Entfernung im Festival-Modus).
     </p>
   </section>
 
@@ -332,6 +341,7 @@
       <li>Standortdaten werden auf dem Gerät zwischengespeichert und sind durch das Android-Sicherheitsmodell geschützt.</li>
       <li>Zugriff auf Standortdaten ist ausschließlich authentifizierten Nutzern mit aktiver Verbindung möglich.</li>
       <li>Server-seitige Zugriffskontrolle über Firebase Security Rules.</li>
+      <li>Der Foreground Service zur Hintergrundverarbeitung ist jederzeit durch die persistente Systembenachrichtigung für den Nutzer sichtbar und kann durch Trennen der Verbindung sofort beendet werden.</li>
     </ul>
   </section>
 
